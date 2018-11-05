@@ -6,15 +6,15 @@
   <title>Srcset builder</title>
   <style>
     body { max-width: 400px; margin: 50px auto; font-family: sans-serif; }
-    label {display: block; overflow: hidden; padding: 10px 0;}
-    input { display: block; width: 200px;}
-    img { float: right; width: 80px;}
-    textarea { width: 100%; display: block; background: #aaa; padding: 20px; }
+    label {display: block; overflow: hidden; padding: 0 0 10px;}
+    input { display: block; width: 300px;}
+    img { float: right; width: 70px;}
+    textarea { width: 100%; display: block; background: #eee; height: 100px; padding: 20px; }
   </style>
 </head>
 <body>
 <div id="image">
-  
+  <h1>Image builder</h1>
   <p>Image fields</p>
   <label class="form-group">src sml <input type="text" v-model="sml"><img :src="sml"></label>
   <label class="form-group">src med <input type="text" v-model="med"><img :src="med"></label>
