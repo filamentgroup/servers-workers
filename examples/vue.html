@@ -3,31 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
+  <title>Srcset builder</title>
+  <style>
+    label {display: block; overflow: hidden;}
+    img { float: right; width: 80px;}
+  </style>
 </head>
 <body>
 <div id="image">
   
   <p>Image fields</p>
-  <label class="form-group">src sml <input type="text" v-model="sml"></label>
-  <label class="form-group">src med <input type="text" v-model="med"></label>
-  <label class="form-group">src lrg <input type="text" v-model="lrg"></label>
+  <label class="form-group">src sml <input type="text" v-model="sml"><img :src="sml"></label>
+  <label class="form-group">src med <input type="text" v-model="med"><img :src="med"></label>
+  <label class="form-group">src lrg <input type="text" v-model="lrg"><img :src="lrg"></label>
   <label><input type="checkbox" v-model="lazy">Lazy load image?</label>
-  <label class="form-group">Alt text <input type="text" v-model="alt"></label>
-  <p>Image Preview:</p>
-  <img :src="sml"  
-       :srcset="sml + ' ' + smlsize + 'w,' +
-                med + ' ' + medsize + 'w,' +
-                lrg + ' ' + lrgsize + 'w'"
-       :alt="alt" :class="lazy? 'lazyload' : ''">
+  <label class="form-group">Alt text <input type="text" v-model="alt"></label>  
   
   <p>Image Markup:</p>
   <pre><code>
-  &lt;img :src="sml"  
-       :srcset="sml + ' ' + smlsize + 'w,' +
-                med + ' ' + medsize + 'w,' +
-                lrg + ' ' + lrgsize + 'w,'"
-       :alt="alt" :class="lazy? "lazyload" : "&gt;
+  &lt;img src="{{sml}}" srcset="{{sml}} {{smlsize}}w, {{med}} {{medsize}}w, {{lrg}} {{lrgsize}}w" alt="{{alt}}" {{lazy? 'class="lazyload" : "" }}&gt;
    </code></pre>
 </div>
   
