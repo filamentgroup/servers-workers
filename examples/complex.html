@@ -2,21 +2,25 @@
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8">
-		<title>Complex Test</title>
-		<link rel="stylesheet" href="sign.css">
+		<title>cache Test</title>
+		<style id="styles">
+			body { background: green; }
+		</style>
+		<script>
+			var a = document.getElementById("styles").innerHTML;
+			caches.open('v1').then(function(cache) {
+		    cache.put("body.css", new Response(a, {headers: {'Content-Type': 'text/css'}}));
+		  });
+
+			// Register the service worker if available.
+		  if (navigator.serviceWorker) {
+		      navigator.serviceWorker.register('/sw.js', {
+		          scope: '/'
+		      });
+		  }
+		</script>
 	</head>
 	<body>
-		<!--workertest:mytest=a-->
-			<a href="#" class="donuts">
-				Try our delicious <i>donuts!</i>
-				<img src="donuts.png" alt="two glazed donuts with pink icing">
-			</a>
-		<!--/workertest:mytest=a-->
-		<!--workertest:mytest=b-->
-			<a href="#" class="wafel">
-				Try our delicious <i>stroop wafels!</i>
-				<img src="wafel.png" alt="stack of stroop wafels">
-			</a>
-		<!--/workertest:mytest=b-->
+
 	</body>
 </html>
