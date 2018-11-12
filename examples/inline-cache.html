@@ -8,13 +8,11 @@
 		</style>
 		<script>
 			var css = document.getElementById("css").innerHTML;
-			if( caches in window ){
-			  caches.open('static').then(function(cache) {
-			    cache.put("site.css", new Response( css,
-			      {headers: {'Content-Type': 'text/css'}}
-			    ));
-			  });
-			}
+		  caches.open('static').then(function(cache) {
+		    cache.put("site.css", new Response( css,
+		      {headers: {'Content-Type': 'text/css'}}
+		    ));
+		  });
 
 			// Register the service worker if available.
 		  if (navigator.serviceWorker) {
