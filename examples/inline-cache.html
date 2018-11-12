@@ -7,7 +7,7 @@
 			body { background: green; }
 		</style>
 		<script>
-			var css = document.getElementById("css").innerHTML;
+			var css = document.getElementById("css").innerText;
 		  caches.open('static').then(function(cache) {
 		    cache.put("site.css", new Response( css,
 		      {headers: {'Content-Type': 'text/css'}}
