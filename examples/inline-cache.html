@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>cache Test</title>
 		<style id="css">
-			body { background: green; }
+			body { background: green; color: #fff; }
 		</style>
 		<script>
 			var css = document.getElementById("css").innerText;
@@ -23,6 +23,8 @@
 		</script>
 	</head>
 	<body>
-		<p>Here's <a href="inline-cache-b.html">a link to a page that references site.css</a>. If this works, it should get the file from local cache.</p>
+		<p>Here's <a href="inline-cache-b.html">a link to a page that references site.css</a>.
+			If the backround on that page is green, it got the file from local cache.
+			If it's blue, it made a new request.</p>
 	</body>
 </html>
