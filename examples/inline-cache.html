@@ -3,19 +3,26 @@
 	<head>
 		<meta charset="utf-8">
 		<title>cache Test</title>
-		<style id="css">
+		<style data-cache data-type="text/css" data-path="site.css">
 			body { background: green; color: #fff; }
 			a { color: #fff; }
 		</style>
 		<script>
-			var css = document.getElementById("css").innerText;
-		  caches.open('static').then(function(cache) {
-		    cache.put("site.css", new Response( css,
-		      {headers: {'Content-Type': 'text/css'}}
-		    ));
-		  });
+			if( caches in window ){
+			  var toCache = document.querySelectorAll( "[data-cache]" );
+			  for( var i in toCache ){
+			    var elem = toCache[ i ];
+			    var filepath = elem.getAttribute( "data-path" );
+			    var filetype = elem.getAttribute( "data-type" );
+			    caches.open( "static" ).then(function( cache ) {
+			      cache.put( cachePath, new Response( css,
+			        {headers: {'Content-Type': cacheType }}
+			      ));
+			    });
+			  }
+			}
 
-			// Register the service worker if available.
+			// Register the service worker
 		  if (navigator.serviceWorker) {
 		      navigator.serviceWorker.register('/sw.js', {
 		          scope: '/'
