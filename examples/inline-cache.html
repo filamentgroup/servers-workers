@@ -10,7 +10,7 @@
 		<script>
 			if( caches in window ){
 			  var toCache = document.querySelectorAll( "[data-cache]" );
-			  for( var i in toCache ){
+			  for( var i = 0; i < toCache.length; i++ ){
 			    var elem = toCache[ i ];
 			    var filepath = elem.getAttribute( "data-path" );
 			    var filetype = elem.getAttribute( "data-type" );
