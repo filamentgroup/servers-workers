@@ -1,0 +1,5 @@
+AddHandler server-parsed .html
+Options Indexes Includes FollowSymlinks
+
+# make sure our ssi includes work
+SSILegacyExprParser on
