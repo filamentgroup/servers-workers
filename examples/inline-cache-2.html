@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>cache Test</title>
+		<style data-cache data-type="text/css" data-path="site.css" data-cache="static">
+			body { background: green; color: #fff; }
+			a { color: #fff; }
+		</style>
+		<script data-cache data-type="text/javascript" data-path="head.js" data-cache="static">
+			alert( "This script ran from head.js, which was inlined and local." );
+		</script>
+		<script>
+			if( caches in window ){
+			  var toCache = document.querySelectorAll( "[data-cache]" );
+			  for( var i = 0; i < toCache.length; i++ ){
+			    var elem = toCache[ i ];
+			    var filepath = elem.getAttribute( "data-path" );
+			    var filetype = elem.getAttribute( "data-type" );
+			    var filecache = elem.getAttribute( "data-cache" );
+					var filetext = elem.innerHTML;
+			    caches.open( filecache ).then(function( cache ) {
+			      cache.put( filepath, new Response( filetext,
+			        {headers: {'Content-Type': filetype }}
+			      ));
+			    });
+			  }
+			}
+
+			// Register the service worker
+		  if (navigator.serviceWorker) {
+		      navigator.serviceWorker.register('/sw.js', {
+		          scope: '/'
+		      });
+		  }
+		</script>
+	</head>
+	<body>
+		<p>Here's <a href="inline-cache-b.html">a link to a page that references site.css</a>.
+			If the backround on that page is green, it got the file from local cache.
+			If it's red, it had to request the file from the server.</p>
+	</body>
+</html>
