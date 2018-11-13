@@ -19,6 +19,7 @@
 			    var filetype = elem.getAttribute( "data-type" );
 			    var filecache = elem.getAttribute( "data-cache" );
 					var filetext = elem.innerHTML;
+					console.log(filetext);
 			    caches.open( filecache ).then(function( cache ) {
 			      cache.put( filepath, new Response( filetext,
 			        {headers: {'Content-Type': filetype }}
