@@ -11,7 +11,7 @@
 			alert( "This script ran from head.js, which was inlined and local." );
 		</script>
 		<script>
-			if( caches in window ){
+			if( "caches" in window ){
 				function cacheFile( file ){
 					caches.open( file.filecache ).then(function( cache ) {
 						cache.put( file.filepath, new Response( file.filetext,

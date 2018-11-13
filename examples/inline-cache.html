@@ -8,9 +8,9 @@
 			a { color: #fff; }
 		</style>
 		<script>
-			if( caches in window ){
+			if( "caches" in window ){
 				var css = document.getElementById("css").innerHTML;
-				if( caches in window ){
+				if( caches ){
 					caches.open('static').then(function(cache) {
 						cache.put("site.css", new Response( css,
 							{headers: {'Content-Type': 'text/css'}}
