@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>cache Test</title>
-		<style data-cache data-type="text/css" data-path="site.css">
+		<style data-cache data-type="text/css" data-path="site.css" data-cache="static">
 			body { background: green; color: #fff; }
 			a { color: #fff; }
 		</style>
@@ -14,9 +14,11 @@
 			    var elem = toCache[ i ];
 			    var filepath = elem.getAttribute( "data-path" );
 			    var filetype = elem.getAttribute( "data-type" );
-			    caches.open( "static" ).then(function( cache ) {
-			      cache.put( cachePath, new Response( css,
-			        {headers: {'Content-Type': cacheType }}
+			    var filecache = elem.getAttribute( "data-cache" );
+					var filetext = elem.innerHTML;
+			    caches.open( filecache ).then(function( cache ) {
+			      cache.put( filepath, new Response( filetext,
+			        {headers: {'Content-Type': filetype }}
 			      ));
 			    });
 			  }
