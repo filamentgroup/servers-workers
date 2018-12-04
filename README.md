@@ -1,6 +1,6 @@
 # Servers Workers
 
-Example files for service worker driven AB tests that are designed to run on the server.
+Example files for service worker driven AB tests that are designed to run on the server. Code is Open Source and free to use (MIT)
 
 
 - Simple Example: https://cloudflareworkers.com/#a54c7d6e665ba479c5f7b358ac61edfd:https://master-origin-servers-workers.fgview.com/simple.html
