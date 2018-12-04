@@ -1,5 +1,7 @@
 # Servers Workers
 
+Examples to pair with the article https://www.filamentgroup.com/lab/servers-workers.html
+
 Example files for service worker driven AB tests that are designed to run on the server. Code is Open Source and free to use (MIT)
 
 
