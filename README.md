@@ -1,3 +1,5 @@
+:warning: This project is archived and the repository is no longer maintained.
+
 # Servers Workers
 
 Example files for service worker driven AB tests that are designed to run on the server.
